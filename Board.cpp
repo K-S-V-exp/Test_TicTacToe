@@ -1,54 +1,9 @@
-class BoardIterator;
+#include "Board.h"
+#include "misc.h"
 
-
-/*!
- *  The board of the Tic Tac Toe game (a table 3*3).
- */
-class Board
-{
-public:
-    typedef BoardIterator const_iterator;
-    enum class Cell
-    {
-        empty,
-        cross,
-        circle
-    };
-
-    Board();
-    virtual ~Board();
-
-    /*!
-     *	Verify if there is any condition up there true or if the table is full.
-     *	return True if it is, false elsewhere.
-     */
-    bool complete() const;
-
-    Cell getValueAt(const int row, const int column) const;
-    void setValueAt(const int row, const int column, const Cell value);
-
-    /*!
-    *	Verify if there is a row with only the same char.
-    */
-    bool checkRows() const;
-
-    /*!
-     *	Verify if there is a column with only the same char.
-     */
-    bool checkColumn() const;
-
-    /*!
-     *	Verify if there is a diagonal with only the same char.
-     */
-    bool checkDiagonal() const;
-
-
-    const_iterator begin() const;
-    const_iterator end() const;
-
-private:
-    std::array<std::array<Cell, 3>, 3> _board;    /*!< The board for Tic Tac Toe game, a 3*3 table. */
-};
+#include <algorithm>
+#include <cassert>
+#include <istream>
 
 
 std::istream& operator>>(std::istream& is, Board::Cell& cell);

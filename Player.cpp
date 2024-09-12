@@ -1,19 +1,10 @@
 /*!
  *  The player is there to knows who's playing.
  */
-class Player {
-public:
 
-    Player(int id);
-    virtual ~Player();
+#include "Player.h"
 
-    void displayPlayer();
-
-    int getId();
-
-private:
-    int _id; /*!< The ID of the player. */
-};
+#include <iostream>
 
 Player::Player(int id) : _id(id)
 {

@@ -1,6 +1,12 @@
 /* !
 *  The game contains the players, the rules and the display.
 */
+#include "Board.h"
+#include "Player.h"
+
+#include <iostream>
+#include <vector>
+
 class Game {
 public:
 
@@ -56,6 +62,7 @@ void Game::askValue()
 {
     int row, column;
     Board::Cell value;
+    char val;
     bool pass = false;
 
     std::cout << "Give a Row, a Column and a Value: " << std::endl;
@@ -63,7 +70,17 @@ void Game::askValue()
     {
         std::cin >> row;
         std::cin >> column;
-        std::cin >> value;
+        std::cin >> val;
+        if (val == 'o')
+            value = Board::Cell::circle;
+        else if (val == 'x')
+            value = Board::Cell::cross;
+        else
+        {
+            std::cout << "Wrong value";
+            continue;
+        }
+
 
         if (_board.getValueAt(row, column) == Board::Cell::empty)
         {
